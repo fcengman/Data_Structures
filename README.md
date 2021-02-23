@@ -4,15 +4,15 @@ Data Structure Practice
 
 ## List.java
 
-List interface
+List interface\
 Methods: append(), add(i, x), removeList(), remove(x), replace(i, x), get(i), find(x), size(), toString()
 
 ## ArrayList.java
 
-Implements list interface
+Implements list interface\
 Additional Methods: ArrayList(), newArray(i, arr), resize(), isEmpty()
 
 ## SSList.java
 
-Implements list interface
+Implements list interface\
 Additional Methods: isEmpty()
