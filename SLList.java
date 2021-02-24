@@ -1,4 +1,13 @@
-public class SLList<T> implements XList<T> {
+
+/**
+ * title: SLList.java
+ * description: This class uses a singly linked list to implement the list interface. 
+ * date: February 23, 2021
+ * @author Freya Engman
+ * @version 1.0
+ * @copyright 2001-2020 Freya Engman
+ */
+public class SLList<T> implements List<T> {
     private class Node<T> {
         T value;
         Node<T> next;
@@ -95,7 +104,7 @@ public class SLList<T> implements XList<T> {
     }
 
     /** Replaces an element at a given position. */
-    public void replace(int index, T item) {
+    public void set(int index, T item) {
         if (index > size || size < 0)
             throw new IndexOutOfBoundsException();
         if (item == null)
@@ -189,11 +198,11 @@ public class SLList<T> implements XList<T> {
         list.remove(5);
         System.out.println(list + " Size: " + list.size());
         System.out.println(list.remove(10));
-        list.replace(2, 6);
+        list.set(2, 6);
         System.out.println(list + " Size: " + list.size());
-        list.replace(0, 1);
+        list.set(0, 1);
         System.out.println(list + " Size: " + list.size());
-        list.replace(3, 8);
+        list.set(3, 8);
         System.out.println(list + " Size: " + list.size());
         System.out.println("At index 1 is: " + list.get(1));
         System.out.println("1's index is: " + list.find(1));

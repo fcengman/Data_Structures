@@ -16,3 +16,8 @@ Additional Methods: ArrayList(), newArray(i, arr), resize(), isEmpty()
 
 Implements list interface\
 Additional Methods: isEmpty()
+
+## DLList.java
+
+Implements list interface\
+Additional Methods: isEmpty()

@@ -11,7 +11,7 @@
 
 import java.util.Arrays;
 
-public class ArrayList<T> implements XList<T> {
+public class ArrayList<T> implements List<T> {
     T[] values;
     int size;
     final int DEFAULT_SIZE = 10;
@@ -127,7 +127,7 @@ public class ArrayList<T> implements XList<T> {
      * @param index Position of the item to be replaced.
      * @param item  Element to be added to the array.
      */
-    public void replace(int index, T item) {
+    public void set(int index, T item) {
         if (index >= size || index < 0)
             throw new IndexOutOfBoundsException();
         values[index] = item;
@@ -200,7 +200,7 @@ public class ArrayList<T> implements XList<T> {
         array.add(3, 11);
         System.out.println(array);
         System.out.println(array.get(4));
-        array.replace(4, 12);
+        array.set(4, 12);
         System.out.println(array);
         array.removeLast();
         System.out.println(array);
