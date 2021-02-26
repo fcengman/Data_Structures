@@ -8,7 +8,6 @@
  * @copyright 2001-2020 Freya Engman
  */
 
-
 import java.util.Arrays;
 
 public class ArrayList<T> implements List<T> {
@@ -93,7 +92,7 @@ public class ArrayList<T> implements List<T> {
      * @param item Element removed from the array.
      * @return Element removed from the array.
      */
-    public T remove(T item) {
+    public T removeElement(T item) {
         if (item == null)
             return null;
         T temp = null;
@@ -118,6 +117,26 @@ public class ArrayList<T> implements List<T> {
         values[size] = null;
         if (size / values.length < .5)
             resize();
+        return temp;
+    }
+
+    /**
+     * Removes a given item from the array based on a given index;
+     * 
+     * @param index Position of the element to be removed from the list.
+     * @return Element removed from the array.
+     */
+    public T remove(int index) {
+        if (index >= size || index < 0)
+            throw new IndexOutOfBoundsException();
+        if (isEmpty())
+            return null;
+        T temp = values[index];
+        for (int i = index; i < size - 1; i++) {
+            values[i] = values[i + 1];
+        }
+        values[size - 1] = null;
+        size--;
         return temp;
     }
 
@@ -173,11 +192,19 @@ public class ArrayList<T> implements List<T> {
         return size == 0;
     }
 
+    /** Get the arrays total length. */
+    public int length(){
+        return values.length;
+    }
+
     /** Generates a string of the elements stored in the array. */
     public String toString() {
         T[] output = newArray(size);
-        for (int i = 0; i < size; i++) {
-            output[i] = values[i];
+        int position = 0;
+        for (int i = 0; i < values.length; i++) {
+            if (values[i] != null) {
+                output[position++] = values[i];
+            }
         }
         return Arrays.toString(output);
     }
@@ -204,11 +231,13 @@ public class ArrayList<T> implements List<T> {
         System.out.println(array);
         array.removeLast();
         System.out.println(array);
-        array.remove(4);
+        array.removeElement(4);
         System.out.println(array);
-        array.remove(6);
+        array.removeElement(6);
         System.out.println(array);
         System.out.println(array.find(3));
+        array.remove(3);
+        System.out.println(array);
 
     }
 }

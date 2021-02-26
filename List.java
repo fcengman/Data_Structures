@@ -1,6 +1,6 @@
 
 /**
- * title: XList.java description: An interface with list methods. date: February
+ * Title: List.java Description: An interface with list methods. Date: February
  * 23, 2021
  * 
  * @author Freya Engman
@@ -19,7 +19,10 @@ public interface List<T> {
     public T removeLast();
 
     /** Remove an item from the list. */
-    public T remove(T item);
+    public T removeElement(T item);
+
+    /** Remove an item from the list based on given position. */
+    public T remove(int index);
 
     /** Replace an item in the list at a given position. */
     public void set(int index, T item);

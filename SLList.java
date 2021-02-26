@@ -1,8 +1,8 @@
 
 /**
- * title: SLList.java
- * description: This class uses a singly linked list to implement the list interface. 
- * date: February 23, 2021
+ * title: SLList.java description: This class uses a singly linked list to
+ * implement the list interface. date: February 23, 2021
+ * 
  * @author Freya Engman
  * @version 1.0
  * @copyright 2001-2020 Freya Engman
@@ -71,7 +71,7 @@ public class SLList<T> implements List<T> {
     }
 
     /** Remove a given element from the list. */
-    public T remove(T item) {
+    public T removeElement(T item) {
         if (item == null)
             return null;
 
@@ -101,6 +101,32 @@ public class SLList<T> implements List<T> {
             prev = prev.next;
         }
         return null; // Item is not in the list.
+    }
+
+    public T remove(int index) {
+        if (index > size || size < 0)
+            throw new IndexOutOfBoundsException();
+        if (isEmpty())
+            return null;
+        if (index == 0) {
+            head = head.next;
+        }
+        Node<T> current = head.next;
+        Node<T> prev = head;
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+        T temp = current.value;
+        if (index == size - 1) {
+            prev.next = null;
+            tail = prev;
+        } else {
+            prev.next = current.next;
+            current.next = null;
+        }
+        size--;
+        return temp;
+
     }
 
     /** Replaces an element at a given position. */
@@ -193,11 +219,11 @@ public class SLList<T> implements List<T> {
         System.out.println(list + " Size: " + list.size());
         list.removeLast();
         System.out.println(list + " Size: " + list.size());
-        list.remove(1);
+        list.removeElement(1);
         System.out.println(list + " Size: " + list.size());
-        list.remove(5);
+        list.removeElement(5);
         System.out.println(list + " Size: " + list.size());
-        System.out.println(list.remove(10));
+        System.out.println(list.removeElement(10));
         list.set(2, 6);
         System.out.println(list + " Size: " + list.size());
         list.set(0, 1);

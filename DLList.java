@@ -1,8 +1,8 @@
 
 /**
- * title: DLList.java
- * description: This class implements a doubly linked list, implementing the list interface.  
- * date: February 23, 2021
+ * title: DLList.java description: This class implements a doubly linked list,
+ * implementing the list interface. date: February 23, 2021
+ * 
  * @author Freya Engman
  * @version 1.0
  * @copyright 2001-2020 Freya Engman
@@ -81,7 +81,7 @@ public class DLList<T> implements List<T> {
     }
 
     /** Removes an element from the list at a given position. */
-    public T remove(T item) {
+    public T removeElement(T item) {
         if (item == null)
             return null;
         T output = null;
@@ -110,6 +110,23 @@ public class DLList<T> implements List<T> {
         if (output != null)
             size--;
         return output;
+    }
+
+    public T remove(int index) {
+        if (index > size - 1 || size < 0)
+            throw new IndexOutOfBoundsException();
+        if (isEmpty())
+            return null;
+        Node<T> current = head;
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+        T temp = current.value;
+        current.prev.next = current.next;
+        current.next.prev = current.prev;
+        current = null;
+        size--;
+        return temp;
     }
 
     /** Replace an element at a given position. */
@@ -203,11 +220,11 @@ public class DLList<T> implements List<T> {
         System.out.println(list);
         list.removeLast();
         System.out.println(list);
-        list.remove(0);
+        list.removeElement(0);
         System.out.println(list);
-        list.remove(12);
+        list.removeElement(12);
         System.out.println(list);
-        list.remove(5);
+        list.removeElement(5);
         System.out.println(list);
         list.set(2, 4);
         System.out.println(list);
@@ -218,6 +235,8 @@ public class DLList<T> implements List<T> {
         System.out.println(list.get(5));
         System.out.println(list.find(2));
         System.out.println(list.find(10));
+        list.remove(2);
+        System.out.println(list);
 
     }
 

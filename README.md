@@ -17,7 +17,12 @@ Additional Methods: ArrayList(), newArray(i, arr), resize(), isEmpty()
 Implements list interface\
 Additional Methods: isEmpty()
 
-## DLList.java
+## ArrayStack.java
 
-Implements list interface\
+Implements Stack interface\
 Additional Methods: isEmpty()
+
+## ArrayQueue.java
+
+Implements Queue interface\
+Additional Methods: reorder()
